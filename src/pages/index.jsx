@@ -107,7 +107,7 @@ export default function Home() {
         {/* Form for RSVP */}
         <section className="bg-blue-50 text-gray-800">
           <div className="relative mx-auto max-w-5xl">
-            <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+            <div className="flex flex-1 flex-col justify-center px-6 py-12 lg:px-8">
               <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                 <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
                   RSVP for the Orientation
@@ -326,21 +326,8 @@ export default function Home() {
                               as="h3"
                               className="text-lg font-medium leading-6 text-gray-900"
                             >
-                              Briefs about ISoI (Instrument Society of India)
+                              To know more about us, Attend our Orientation
                             </Dialog.Title>
-                            <div className="mt-2">
-                              <p className="text-sm text-gray-500">
-                                The Society of Instrumentation Professionals was
-                                established in 1970 with help from the Indian
-                                Institute of Science, Bangalore. It strives to
-                                act as a link between academic institutions and
-                                the instrumentation industry by organizing
-                                several programs. It also conducts programs for
-                                students and working professionals in the form
-                                of short-term courses, symposia, and topical
-                                reviews.
-                              </p>
-                            </div>
                           </div>
                         </div>
                         <div className="mt-5 sm:mt-6">
@@ -358,17 +345,6 @@ export default function Home() {
                 </div>
               </Dialog>
             </Transition.Root>
-          </div>
-          <div className="mx-auto mt-3 max-w-5xl items-center justify-center px-4 sm:px-6 lg:px-8">
-            <div className="mb-6">
-              <iframe
-                className="aspect-video w-full rounded-lg shadow-lg"
-                src="https://www.youtube.com/embed/TkwXa7Cvfr8?si=G_GTWktIlPjPueCq"
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              ></iframe>
-            </div>
           </div>
         </section>
       </main>
