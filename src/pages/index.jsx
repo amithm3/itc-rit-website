@@ -10,6 +10,9 @@ import { ButtonLink } from '@/components/Button'
 import heroimage from '@/images/aibackground.png'
 import Image from 'next/image'
 import firebase from 'firebase/compat/app'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 import 'firebase/compat/firestore'
 const firebaseConfig = {
   apiKey: 'AIzaSyBQoNB26QBTLBQV4bIOUjcE_v3v8f2T3js',
@@ -62,12 +65,36 @@ export default function Home() {
     })
   }
 
+  const isValidIndianPhoneNumber = (phoneNo) => {
+    const cleanedPhoneNo = phoneNo.replace(/\s+/g, '').replace(/^\+91/, '')
+    const phoneNoRegex = /^\d{10}$/
+    return phoneNoRegex.test(cleanedPhoneNo)
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault()
+    const cleanedPhoneNo = formData.phoneNo
+      .replace(/\s+/g, '')
+      .replace(/^\+91/, '')
+    if (!isValidIndianPhoneNumber(cleanedPhoneNo)) {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        phoneNo: '',
+      }))
+      toast.error("That's a funky number! Mind double-checking it for us?")
+      console.error('Invalid phone number:', formData.phoneNo)
+      return
+    }
+
+    const newRSVP = {
+      ...formData,
+      phoneNo: cleanedPhoneNo,
+    }
 
     try {
-      await firestore.collection('rsvp').add(formData)
-      alert('RSVP submitted! Thank you.')
+      const docRef = await firestore.collection('rsvpnew').add(newRSVP)
+      console.log('RSVP submitted:', newRSVP, 'with doc ID:', docRef.id)
+      toast.success(`Eureka, ${formData.name}! Your RSVP is submitted!`)
       setFormData({
         name: '',
         email: '',
@@ -77,7 +104,10 @@ export default function Home() {
         phoneNo: '',
       })
     } catch (error) {
-      console.error('Error adding RSVP: ', error)
+      console.error('Error submitting RSVP:', error.message)
+      toast.error(
+        'Oops! Something went wrong. Please try again or contact support.'
+      )
     }
   }
 
@@ -106,16 +136,50 @@ export default function Home() {
       </Head>
       <Header />
       <main>
-        {/* Form for RSVP */}
         <section className="bg-blue-50 text-gray-800">
+          <div className="pt-10">
+            <div className="relative mx-auto max-w-5xl">
+              <Image
+                className="opacity-50 lg:rounded-lg"
+                src={heroimage}
+                alt="Background Image"
+                layout="fill"
+                objectFit="cover"
+                quality={100}
+              />
+              <div className="container relative z-10 mx-auto flex flex-col items-center justify-center px-4 py-10 text-center align-middle md:px-10 lg:px-8 lg:py-16">
+                <h1 className="text-3xl font-bold leading-none drop-shadow-xl md:text-4xl lg:text-6xl">
+                  Innovation & Training Club
+                </h1>
+                <h1 className="text-xl text-black drop-shadow-md lg:text-2xl">
+                  Ramaiah Institute Of Technology
+                </h1>
+                <p className="mt-1 text-lg font-semibold text-blue-900 drop-shadow-lg">
+                  Forging Futures: Innovate, Educate, Elevate.
+                </p>
+              </div>
+            </div>
+          </div>
           <div className="relative mx-auto max-w-5xl">
-            <div className="flex flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+            <div className="flex flex-1 flex-col justify-center px-6 py-6 lg:px-8">
+              <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+              />
               <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                 <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
                   RSVP for the Orientation
                 </h2>
               </div>
-              <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+              <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm lg:max-w-2xl">
                 <form className="space-y-6" onSubmit={handleSubmit}>
                   {/* Name Input */}
                   <div className="mb-4">
@@ -238,80 +302,52 @@ export default function Home() {
         </section>
 
         <section className="bg-blue-50 text-gray-800">
-          <div className="pt-10">
-            <div className="relative mx-auto max-w-5xl">
-              <Image
-                className="opacity-50 lg:rounded-lg"
-                src={heroimage}
-                alt="Background Image"
-                layout="fill"
-                objectFit="cover"
-                quality={100}
-              />
-              <div className="container relative z-10 mx-auto flex flex-col items-center justify-center px-4 py-10 text-center align-middle md:px-10 lg:px-8 lg:py-16">
-                <h1 className="text-3xl font-bold leading-none drop-shadow-xl md:text-4xl lg:text-6xl">
-                  Innovation & Training Club
-                </h1>
-                <h1 className="text-xl text-black drop-shadow-md lg:text-2xl">
-                  Ramaiah Institute Of Technology
-                </h1>
-                <p className="mt-1 text-lg font-semibold text-blue-900 drop-shadow-lg">
-                  Forging Futures: Innovate, Educate, Elevate.
-                </p>
-              </div>
-            </div>
-          </div>
           <div className="mx-auto max-w-5xl px-4 pb-16 pt-5 text-start sm:px-6 lg:px-8 lg:pt-8">
-            <h1 className="mb-2 ml-2 text-xl font-bold leading-none lg:text-3xl">
+            <h1 className="mb-2 ml-2 text-center text-xl font-bold leading-none lg:text-3xl">
               About ITC RIT
             </h1>
             <div className="rounded-xl bg-blue-100">
               <p className="text-md mx-auto p-2 tracking-tight text-slate-800 lg:p-4 lg:text-xl">
-                At the Innovation & Training Club, we are more than just a
-                community; we are a launchpad for tomorrow's innovators and
-                industry leaders. Our mission is to sculpt the mind and skills
-                of our members through a diverse array of courses that span the
-                most pulsating topics and trends of our time.
+                Welcome to the Innovation & Training Club, where every session
+                is a step towards your future. Our club is a powerhouse of
+                knowledge, offering specialized courses in the most trending
+                topics, designed and delivered by industry stalwarts and
+                academic experts.
               </p>
               <p className="text-md mx-auto p-2 tracking-tight text-slate-800 lg:p-4 lg:text-xl">
-                Guided by seasoned industry experts and dedicated faculty
-                coordinators, our members immerse themselves in learning
-                experiences that blend cutting-edge theory with practical,
-                hands-on exercises. From the intricacies of software development
-                to the specific know-how required in core and non-core fields,
-                our curriculum is meticulously crafted to prepare you for the
-                professional world.
+                As a member, you stand at the forefront of innovation, equipped
+                with the tools to navigate and master the ever-evolving
+                technological and professional landscapes. We're not just about
+                learning; we're about applying. Through our exclusive
+                partnerships, we offer internships across a spectrum of
+                fields—software, core industries, and beyond—turning learning
+                into real-world impact for deserving talents.
               </p>
               <p className="text-md mx-auto p-2 tracking-tight text-slate-800 lg:p-4 lg:text-xl">
-                But we don't just stop at training. We believe in 'doing' as the
-                best kind of learning. That's why we're committed to bridging
-                the gap between theoretical knowledge and real-world practice.
-                Deserving candidates earn the opportunity to test their mettle
-                through internships with our esteemed club partners, gaining
-                invaluable on-the-job experience and networking with industry
-                insiders.
+                Research enthusiasts, we've got you covered too. Collaborate
+                with leading organizations like ISoI, propel your studies, and
+                contribute to groundbreaking work that defines tomorrow.
               </p>
               <p className="text-md mx-auto p-2 tracking-tight text-slate-800 lg:p-4 lg:text-xl">
-                For those whose passion lies in the realm of research, we offer
-                a robust platform to explore, innovate, and contribute to the
-                body of knowledge in their field. In collaboration with the
-                International Society of Innovation (ISoI) and other partnered
-                organizations, we nurture and bring to fruition the research
-                aspirations of our students.
+                Step into the Innovation & Training Club, where your passion
+                meets our expertise. Together, let's shape the future.
               </p>
-            </div>
-            <div className="flex flex-wrap justify-center">
-              <p className="text-md mt-8 rounded bg-blue-900 px-4 py-1.5 font-semibold text-gray-50">
+              <p className="text-md mb-6 rounded px-4 py-1.5 text-center font-semibold text-slate-800">
                 Join us. Innovate. Train. Thrive.
               </p>
             </div>
             <div className="flex flex-wrap justify-center">
-              <button
+              <a href="/about">
+                <button className="text-md mt-8 rounded bg-blue-900 px-4 py-1.5 font-semibold text-gray-50">
+                  Know more
+                </button>
+              </a>
+              {/* <button
                 onClick={() => setOpen(true)}
                 className="text-md mt-8 rounded bg-blue-900 px-4 py-1.5 font-semibold text-gray-50"
               >
                 Know more
-              </button>
+              </button> */}
             </div>
             <Transition.Root show={open} as={Fragment}>
               <Dialog as="div" className="relative z-10" onClose={setOpen}>

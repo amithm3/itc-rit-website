@@ -1,3 +1,4 @@
+import Image from "next/image"
 export function Member({ image, name, designation, link, imagePosition }) {
   const imageClass = `h-72 w-full object-cover transition-transform duration-300 md:h-48 lg:h-72 ${
     imagePosition === 'top'

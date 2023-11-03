@@ -22,7 +22,7 @@ export function Hero() {
         </p>
       </div>
       <Container className="pb-16 pt-5 text-justify lg:pt-8">
-        <p class="text-md mx-auto max-w-4xl rounded-xl bg-blue-100 p-3 tracking-tight text-slate-800 lg:text-xl">
+        <p className="text-md mx-auto max-w-4xl rounded-xl bg-blue-100 p-3 tracking-tight text-slate-800 lg:text-xl">
           <b>IEEE-RIT Student Branch</b> was inaugurated in RIT in November
           2003. The branch endeavors to enrich the students of RIT with the
           latest developments in various fields of technology and research and

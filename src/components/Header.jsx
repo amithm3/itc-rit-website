@@ -9,11 +9,11 @@ import { Logo } from '@/components/Logo'
 import { Image } from 'next/image'
 
 const NAV_ITEMS = [
-  { href: '#', label: 'Events' },
+  { href: '/event', label: 'Events' },
+  { href: '/team', label: 'Team' },
   { href: '/about', label: 'About' },
   { href: '#', label: 'Contact Us' },
-  { href: '#', label: 'Alumni' },
-  { href: '#', label: 'Gallery' },
+  { href: '/alumni', label: 'Alumni' },
 ]
 function MenuItem({ href, label }) {
   return (
