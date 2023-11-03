@@ -11,7 +11,7 @@ import { Image } from 'next/image'
 const NAV_ITEMS = [
   { href: '#', label: 'Events' },
   { href: '/about', label: 'About' },
-  { href: '/contactus', label: 'Contact Us' },
+  { href: '#', label: 'Contact Us' },
   { href: '#', label: 'Alumni' },
   { href: '#', label: 'Gallery' },
 ]
@@ -79,8 +79,8 @@ function MobileNavigation() {
                 as="ul"
                 className="absolute inset-x-0 top-full mt-4 origin-top space-y-4 rounded-2xl bg-white p-6 text-lg tracking-tight text-slate-900 shadow-xl ring-1 ring-slate-900/5"
               >
-                {NAV_ITEMS.map((item) => (
-                  <li key={item.href}>
+                {NAV_ITEMS.map((item, index) => (
+                  <li key={index}>
                     <Link href={item.href}>
                       <a className="block w-full" onClick={() => close()}>
                         {item.label}
@@ -118,8 +118,8 @@ export function Header() {
                   </a>
                 </Link>
               </li>
-              {NAV_ITEMS.map((item) => (
-                <MenuItem key={item.href} {...item} />
+              {NAV_ITEMS.map((item, index) => (
+                <MenuItem key={index} {...item} />
               ))}
               <li className="ml-auto md:ml-8 lg:hidden">
                 <ButtonLink href="/" className="bg-[#273D61]">
