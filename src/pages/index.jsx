@@ -28,6 +28,7 @@ export default function Home() {
   const [rsvs, setRsvs] = useState([])
   const [formData, setFormData] = useState({
     name: '',
+    email: '',
     usn: '',
     dept: '',
     topics: '',
@@ -69,6 +70,7 @@ export default function Home() {
       alert('RSVP submitted! Thank you.')
       setFormData({
         name: '',
+        email: '',
         usn: '',
         dept: '',
         topics: '',
@@ -129,6 +131,23 @@ export default function Home() {
                     />
                     <p className="pt-1 text-sm italic text-gray-500">
                       *No fake names, please! We're looking at you, Batman.
+                    </p>
+                  </div>
+
+                  {/* Email */}
+                  <div className="mb-4">
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      placeholder="Your email"
+                      required
+                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      value={formData.email}
+                      onChange={handleChange}
+                    />
+                    <p className="pt-1 text-sm italic text-gray-500">
+                      *We promise no spam. Scouts honor!
                     </p>
                   </div>
 
@@ -348,6 +367,7 @@ export default function Home() {
           </div>
         </section>
       </main>
+
       <Footer />
       {showButton && (
         <button onClick={scrollToTop} className="back-to-top z-999 shadow-lg">
