@@ -9,7 +9,7 @@ import { Logo } from '@/components/Logo'
 import { Image } from 'next/image'
 
 const NAV_ITEMS = [
-  { href: '/event', label: 'Events' },
+  { href: '/events', label: 'Events' },
   { href: '/team', label: 'Team' },
   { href: '/about', label: 'About' },
   { href: '#', label: 'Contact Us' },

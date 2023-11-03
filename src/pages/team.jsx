@@ -23,13 +23,6 @@ const members = [
     image:
       'https://github.com/githubhosting/githubhosting/assets/71520844/a04bd72d-4ccd-4bca-bba2-e8cb8082695e',
   },
-  {
-    name: 'Siddharth',
-    designation: 'Core Member',
-    link: '#',
-    imagePosition: 'top',
-    image: '',
-  },
 ]
 
 export default function Home() {
