@@ -21,7 +21,7 @@ const members = [
     link: 'https://www.linkedin.com/in/shravanrevanna',
     imagePosition: 'top',
     image:
-      'https://github.com/githubhosting/githubhosting/assets/71520844/a04bd72d-4ccd-4bca-bba2-e8cb8082695e',
+      'https://github.com/githubhosting/githubhosting/assets/71520844/d030f2a1-129e-4cd3-8f6b-98e803ac3e3d',
   },
 ]
 
