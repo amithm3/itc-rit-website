@@ -29,9 +29,9 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/">
+                  <Link href="/events">
                     <a className="rounded-lg px-2 py-1 leading-loose text-white hover:bg-slate-100 hover:text-slate-900">
-                      Achievements
+                      Events
                     </a>
                   </Link>
                 </li>

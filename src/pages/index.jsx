@@ -264,7 +264,8 @@ export default function Home() {
                       onChange={handleChange}
                     />
                     <p className="pt-1 text-sm italic text-gray-500">
-                      *What are you interested in? like AI, ML, LLMs, Gen AI, Cyber Security etc.
+                      *What are you interested in? like AI, ML, LLMs, Gen AI,
+                      Cyber Security etc.
                     </p>
                   </div>
 

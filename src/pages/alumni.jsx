@@ -6,11 +6,28 @@ import { Member } from '@/components/Member'
 
 const alumni = [
   {
-    name: 'Rakshith K Salian',
-    designation: 'CAD Designer & Fabricator',
-    link: 'https://www.linkedin.com/in/rakshith-k-salian-4972081a8',
+    name: 'Achintya Mishra',
+    designation: 'Senior Member',
+    link: '#',
+    imagePosition: 'middle',
     image:
-      'https://github.com/githubhosting/web-technologies-lab/assets/71520844/a2a7d37f-861c-4fe2-ba7c-d1199145b128',
+      'https://drive.google.com/uc?export=view&id=1pZYCTV-ujG5yVG2qQ-2XmNO2462iwP7s',
+  },
+  {
+    name: 'Ansh Jain',
+    designation: 'Senior Member',
+    link: '#',
+    imagePosition: 'middle',
+    image:
+      'https://drive.google.com/uc?export=view&id=1mEuVAbprB0X8MIZj_SZjSXwo_rIQjcWn',
+  },
+  {
+    name: 'Avniah Pathak',
+    designation: 'Senior Member',
+    link: '#',
+    imagePosition: 'middle',
+    image:
+      'https://drive.google.com/uc?export=view&id=1iZ1g2_7xHk5rhr5eZPhpLHdlt6kFTmW2',
   },
 ]
 
@@ -35,10 +52,9 @@ export default function Home() {
         <div className="relative isolate mx-auto max-w-5xl px-6 pt-14 lg:px-8">
           <div className="mx-auto max-w-6xl py-4 sm:py-6 lg:py-8">
             <div className="">
-              <h1 className="mb-6 text-3xl font-bold text-gray-900 sm:text-6xl">
-                Alumin Quatlas Aeromodelling
+              <h1 className="mb-6 text-2xl font-bold text-gray-900 sm:text-5xl">
+                Alumni of Innovation & Training Club
               </h1>
-
               <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
                 {alumni.map((member, index) => (
                   <Member
