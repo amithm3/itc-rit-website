@@ -26,10 +26,26 @@ const members = [
   {
     name: 'Chestha Agarwal',
     designation: 'Core Member',
-    link: 'https://www.linkedin.com/in/chestha-agarwal-7a3a1a1a0/',
+    link: '#',
     imagePosition: 'top',
     image:
       'https://github.com/githubhosting/githubhosting/assets/71520844/95fd4555-657d-4b9e-b589-bf530d8efe5c',
+  },
+  {
+    name: 'Aarohi Jain',
+    designation: 'Core Member',
+    link: '#',
+    imagePosition: 'middle',
+    image:
+      'https://drive.google.com/uc?export=view&id=1FARr6yY6uTLcok7DpAZqR_vvtbKbEVsB',
+  },
+  {
+    name: 'Shashi Kumar',
+    designation: 'Core Member',
+    link: '#',
+    imagePosition: 'middle',
+    image:
+      'https://drive.google.com/uc?export=view&id=1XBsbW63PAZfF5-ckLp8gn8sjokaeThW3',
   },
 ]
 

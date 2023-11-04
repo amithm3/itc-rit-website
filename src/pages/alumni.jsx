@@ -29,6 +29,14 @@ const alumni = [
     image:
       'https://drive.google.com/uc?export=view&id=1iZ1g2_7xHk5rhr5eZPhpLHdlt6kFTmW2',
   },
+  {
+    name: 'Pranav',
+    designation: 'Senior Member',
+    link: '#',
+    imagePosition: 'top',
+    image:
+      'https://drive.google.com/uc?export=view&id=1tcgqRly-8bK63iMAaVeEdNRHuguU4D1Y',
+  },
 ]
 
 export default function Home() {
