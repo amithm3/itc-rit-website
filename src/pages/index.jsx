@@ -296,6 +296,17 @@ export default function Home() {
                     </button>
                   </div>
                 </form>
+                <div className="mt-8 flex justify-center">
+                  <a
+                    href="https://chat.whatsapp.com/Fvy6sSk2rKO7KR6XWO6q8j"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button className="rounded-xl bg-green-600 px-6 py-3 font-semibold text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+                      Join Whatsapp Group
+                    </button>
+                  </a>
+                </div>
               </div>
             </div>
           </div>

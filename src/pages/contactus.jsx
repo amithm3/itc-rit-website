@@ -8,16 +8,16 @@ import { ButtonLink } from '@/components/Button'
 import { SectionHeading } from '@/components/SectionHeading'
 const contacts = [
   {
-    role: 'Team leader',
-    name: 'Chaitra',
-    email: 'chaithragp1503@gmail.com',
-    phone: '+91 8147421126',
+    role: 'Head of Innovation & Training Club',
+    name: 'Ansh Jain',
+    email: 'anshjain01061@gmail.com',
+    phone: '+91 9406437454',
   },
   {
-    role: 'Non-Tech',
-    name: 'Manu',
-    email: 'manusmriti31@gmail.com',
-    phone: '+91 9328506454',
+    role: 'Core Team Member',
+    name: 'Shravan',
+    email: 'shravan.revanna@gmail.com',
+    phone: '+91 9945332995',
   },
 ]
 
@@ -26,7 +26,7 @@ export default function Contactus() {
     <>
       <div className="neumorphismbg">
         <Head>
-          <title>Contact Us - IEEE</title>
+          <title>Contact Us - Innovation & Training Club</title>
         </Head>
         <Header />
         <section class="body-font text-gray-600 ">
@@ -36,9 +36,8 @@ export default function Contactus() {
                 <div class="text-center sm:w-1/3 sm:py-8 sm:pr-8">
                   <div class="flex flex-col items-center justify-center text-center">
                     <p class="text-dark flex items-center text-sm font-medium">
-                      ESB II , 119, R&D - 1 Laboratory, Quatlas-RIT Ramaiah
-                      Institute of Technology MSR Nagar, MSRIT Post, Mathikere
-                      Bangalore-560054
+                      ITC-RIT Ramaiah Institute of Technology MSR Nagar, MSRIT
+                      Post, Mathikere Bangalore - 560054
                     </p>
                     <p class="text-dark mt-5 flex items-center text-sm font-medium">
                       <span class="mr-3 text-primary">
@@ -54,8 +53,8 @@ export default function Contactus() {
                         </svg>
                       </span>
                       <span>
-                        <a href="mailto:aeromodellingquatlas@gmail.com">
-                          aeromodelling.quatlas@gmail.com
+                        <a href="mailto:shravanrevanna@gmail.com">
+                          shravan.revanna@gmail.com
                         </a>
                       </span>
                     </p>
@@ -63,12 +62,13 @@ export default function Contactus() {
                 </div>
                 <div class="mb-10 mt-4 rounded-xl border-t border-gray-200 bg-slate-100 p-4 text-justify sm:mt-0 sm:w-2/3 sm:border-l sm:border-t-0 sm:py-8 sm:pl-8 sm:text-left">
                   <p class="mb-4 text-base">
-                    <b>Quatlas Aeromodelling</b> is an official aeromodelling
-                    team of RIT. We participate in the SAE Aero Design
-                    Competition held at the USA annually. We are looking for
-                    motivated & talented students to recruit to the team &
-                    successfully represent our college in the competition. Come
-                    join us and learn more about what we do!
+                    Welcome to the <b>Innovation & Training Club</b> - where
+                    learning meets leading-edge. Dive into trending topics with
+                    industry gurus. Unlock internships that pave your
+                    professional path. Whether you're coding the future,
+                    engineering excellence, or exploring research realms, here's
+                    where your journey begins. Let's innovate, elevate, and
+                    create the extraordinary, together.
                   </p>
                 </div>
               </div>

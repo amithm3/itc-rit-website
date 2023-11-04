@@ -11,7 +11,7 @@ const events = [
       'The "Python for AI Bootcamp" was a dynamic tech immersion experience where participants delved into the world of Artificial Intelligence. They explored Python\'s role in AI, from fundamental programming to advanced applications. Dive into machine learning, deep learning, and data science, and tackle real-world projects. Discover the latest AI tools and libraries, master data preprocessing, and train cutting-edge models. Uncover the ethical dimensions and learn to deploy AI solutions. This bootcamp was an exciting opportunity for tech enthusiasts and aspiring AI developers to elevate their Python skills and chart a course into the future of AI.',
   },
   {
-    title: 'Aarambh',
+    title: 'Aarambh 3.0',
     description:
       '"Aarambh" was an orientation program organized by the ITC RIT club. This event served as an introductory platform for new members, providing insights into the club\'s objectives, activities, and opportunities. It aimed to welcome and engage newcomers, fostering a sense of community and offering a glimpse into the club\'s initiatives and the roles members could play. "Aarambh" kickstarted the journey of club involvement and collaboration for participants, setting the stage for their active participation in club ITC RIT\'s future endeavors.',
   },
@@ -44,7 +44,7 @@ const events = [
 function EventSection({ event }) {
   return (
     <div className="mt-10">
-      <h2 className="text-2xl font-bold text-gray-900">{event.title}</h2>
+      <h2 className="text-2xl font-bold text-gray-900 text-left">{event.title}</h2>
       <p className="mt-2 text-gray-700">{event.description}</p>
     </div>
   )

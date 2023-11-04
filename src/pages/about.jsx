@@ -92,20 +92,11 @@ export default function Home() {
                 </p>
               </div>
 
-              <h1 className="my-10 text-2xl font-bold tracking-tight text-gray-900">
-                Team Members
-              </h1>
-              <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-                {members.map((member, index) => (
-                  <Member
-                    key={index}
-                    name={member.name}
-                    designation={member.designation}
-                    link={member.link}
-                    imagePosition={member.imagePosition}
-                    image={member.image}
-                  />
-                ))}
+              {/* Create a button that will take to team page */}
+              <div className="mt-10">
+                <button className="rounded-lg bg-[#273D61] px-4 py-2 text-lg font-bold text-white">
+                  <a href="/team">Meet Our Team</a>
+                </button>
               </div>
             </div>
           </div>

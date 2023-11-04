@@ -12,7 +12,7 @@ const NAV_ITEMS = [
   { href: '/events', label: 'Events' },
   { href: '/team', label: 'Team' },
   { href: '/about', label: 'About' },
-  { href: '#', label: 'Contact Us' },
+  { href: '/contactus', label: 'Contact Us' },
   { href: '/alumni', label: 'Alumni' },
 ]
 function MenuItem({ href, label }) {

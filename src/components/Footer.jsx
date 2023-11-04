@@ -22,7 +22,7 @@ export function Footer() {
               </h4>
               <ul className="block justify-center">
                 <li>
-                  <Link href="/">
+                  <Link href="/about">
                     <a className="rounded-lg px-2 py-1 leading-loose text-white hover:bg-slate-100 hover:text-slate-900">
                       About
                     </a>
@@ -36,14 +36,14 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/">
+                  <Link href="/team">
                     <a className="rounded-lg px-2 py-1 leading-loose text-white hover:bg-slate-100 hover:text-slate-900">
-                      Gallery
+                      Team
                     </a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/">
+                  <Link href="/contactus">
                     <a className="rounded-lg px-2 py-1 leading-loose text-white hover:bg-slate-100 hover:text-slate-900">
                       Contact Us
                     </a>

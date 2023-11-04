@@ -53,7 +53,7 @@ export default function Home() {
           <div className="mx-auto max-w-6xl py-4 sm:py-6 lg:py-8">
             <div className="">
               <h1 className="mb-6 text-2xl font-bold text-gray-900 sm:text-5xl">
-                Alumni of Innovation & Training Club
+                Head of Innovation & Training Club RIT
               </h1>
               <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
                 {alumni.map((member, index) => (
