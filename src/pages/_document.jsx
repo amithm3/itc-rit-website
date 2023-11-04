@@ -22,7 +22,7 @@ export default function Document(props) {
         />
         <meta
           name="google-site-verification"
-          content="9l6jBCdCjl0ZW1Q6RrsllF3h9y5WdO-_rNvO1BKgH9s"
+          content="GSJRbUjKyZRnrkJjF4jeVyn5JztAqV1md9UPBCcZn7A"
         />
       </Head>
       <body className="flex h-full flex-col">
