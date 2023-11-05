@@ -14,6 +14,67 @@ const firebaseConfig = {
 }
 firebase.initializeApp(firebaseConfig)
 
+export function DownloadCSV() {
+  const firestore = firebase.firestore()
+
+  const [rsvpData, setRsvpData] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getDocs(collection(firestore, 'rsvpnew'))
+      const formattedData = data.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }))
+      setRsvpData(formattedData)
+      downloadCSV(formattedData)
+    }
+    fetchData()
+  }, [])
+  console.log(rsvpData)
+
+  const convertToCSV = (objArray) => {
+    const csvColumns = ['name', 'usn', 'dept', 'email', 'phoneNo', 'topics']
+
+    let csvStr = csvColumns.join(',') + '\r\n'
+
+    objArray.forEach((obj) => {
+      csvStr +=
+        csvColumns
+          .map((key) => {
+            const val = obj.hasOwnProperty(key)
+              ? String(obj[key]).replace(/"/g, '""')
+              : ''
+            return `"${val}"`
+          })
+          .join(',') + '\r\n'
+    })
+
+    return csvStr
+  }
+
+  const downloadCSV = (data) => {
+    const csvStr = convertToCSV(data)
+    const dataUri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvStr)
+
+    const exportFileDefaultName = 'data.csv'
+    const linkElement = document.createElement('a')
+    linkElement.setAttribute('href', dataUri)
+    linkElement.setAttribute('download', exportFileDefaultName)
+    linkElement.click()
+  }
+
+  return (
+    <div>
+      {rsvpData.length > 0 ? (
+        <p>Data has been fetched and CSV download should start!</p>
+      ) : (
+        <p>Loading data...</p>
+      )}
+    </div>
+  )
+}
+
 export default function Admin() {
   const firestore = firebase.firestore()
   const [rsvpData, setRsvpData] = useState([])
@@ -41,14 +102,6 @@ export default function Admin() {
       alert('Invalid Credentials')
     }
   }
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await getDocs(collection(firestore, 'rsvpnew'))
-      setRsvpData(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-    }
-    fetchData()
-  }, [])
 
   if (!loggedIn) {
     return (
@@ -89,7 +142,6 @@ export default function Admin() {
                 >
                   Password
                 </label>
-                {/* Removed forgot password for simplicity */}
               </div>
               <div className="mt-2">
                 <input
@@ -119,101 +171,103 @@ export default function Admin() {
   }
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
-      <div className="sm:flex sm:items-center">
-        <div className="sm:flex-auto">
-          <h1 className="text-xl font-semibold text-gray-900">Responses</h1>
-          <p className="mt-2 text-sm text-gray-700">
-            All responses from the RSVP form
-          </p>
+    <>
+      <div className="px-4 sm:px-6 lg:px-8">
+        <div className="sm:flex sm:items-center">
+          <div className="sm:flex-auto">
+            <h1 className="text-xl font-semibold text-gray-900">Responses</h1>
+            <p className="mt-2 text-sm text-gray-700">
+              All responses from the RSVP form
+            </p>
+          </div>
         </div>
-      </div>
-      <div className="mt-8 flex flex-col">
-        <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-            <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-              <table className="min-w-full divide-y divide-gray-300">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-sm font-semibold text-gray-900"
-                    >
-                      #
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-sm font-semibold text-gray-900"
-                    >
-                      Name
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-sm font-semibold text-gray-900"
-                    >
-                      Email
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-sm font-semibold text-gray-900"
-                    >
-                      Phone No
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-sm font-semibold text-gray-900"
-                    >
-                      Dept
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-sm font-semibold text-gray-900"
-                    >
-                      Topics
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-sm font-semibold text-gray-900"
-                    >
-                      USN
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200 bg-white">
-                  {rsvpData.map((student, index) => (
-                    <tr
-                      key={student.id}
-                      className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}
-                    >
-                      <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">
-                        {index + 1}
-                      </td>
-                      <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">
-                        {student.name}
-                      </td>
-                      <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                        {student.email}
-                      </td>
-                      <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                        {student.phoneNo}
-                      </td>
-                      <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                        {student.dept}
-                      </td>
-                      <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                        {student.topics}
-                      </td>
-                      <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                        {student.usn}
-                      </td>
+        <div className="mt-8 flex flex-col">
+          <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+              <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+                <table className="min-w-full divide-y divide-gray-300">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-left text-sm font-semibold text-gray-900"
+                      >
+                        #
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-left text-sm font-semibold text-gray-900"
+                      >
+                        Name
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-left text-sm font-semibold text-gray-900"
+                      >
+                        Email
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-left text-sm font-semibold text-gray-900"
+                      >
+                        Phone No
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-left text-sm font-semibold text-gray-900"
+                      >
+                        Dept
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-left text-sm font-semibold text-gray-900"
+                      >
+                        Topics
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-left text-sm font-semibold text-gray-900"
+                      >
+                        USN
+                      </th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200 bg-white">
+                    {rsvpData.map((student, index) => (
+                      <tr
+                        key={student.id}
+                        className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}
+                      >
+                        <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">
+                          {index + 1}
+                        </td>
+                        <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">
+                          {student.name}
+                        </td>
+                        <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                          {student.email}
+                        </td>
+                        <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                          {student.phoneNo}
+                        </td>
+                        <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                          {student.dept}
+                        </td>
+                        <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                          {student.topics}
+                        </td>
+                        <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                          {student.usn}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
