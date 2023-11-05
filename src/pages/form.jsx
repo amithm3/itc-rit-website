@@ -229,8 +229,8 @@ export default function Form() {
                       concepts?
                     </label>
                     <select
-                      id="experience"
-                      name="experience"
+                      id="experienceWithAITools"
+                      name="experienceWithAITools"
                       required
                       className="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
                       value={formData.experienceWithAITools}
@@ -250,14 +250,14 @@ export default function Form() {
                   {/* 2nd Question */}
                   <div className="mb-4">
                     <label
-                      htmlFor="interest"
+                      htmlFor="aiInterest"
                       class="mb-2 block text-sm font-bold text-gray-700"
                     >
                       What sparked your interest in AI?
                     </label>
                     <input
-                      id="interest"
-                      name="interest"
+                      id="aiInterest"
+                      name="aiInterest"
                       type="text"
                       placeholder="Curiosity, career prospects, technology, etc."
                       required
